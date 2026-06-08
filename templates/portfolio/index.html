@@ -1,0 +1,620 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ bio.full_name }} — {{ bio.professional_title }}{% endblock %}
+{% block meta_description %}{{ bio.bio }}{% endblock %}
+{% block og_title %}{{ bio.full_name }} | Portfolio{% endblock %}
+
+{% block content %}
+
+{# ================================================================== #}
+{# HERO SECTION                                                         #}
+{# Data source: Bio model (apps.bio)                                    #}
+{# ================================================================== #}
+<section id="hero" class="section-wrapper" style="padding: 0;">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="row align-items-center min-vh-100 g-5 py-5">
+
+      <!-- Left: Text Content -->
+      <div class="col-lg-7">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Available for Work
+        </div>
+
+        <h1 class="hero-title">
+          Hi, I'm <span class="highlight">{{ bio.full_name|default:"Manan Asim" }}</span><br>
+          <span id="typingText"
+                data-text1="AI Automation &amp; Systems Builder"
+                data-text2="No-Code / Low-Code Expert"
+                data-text3="RevOps &amp; CRM Engineer"
+                style="font-size:clamp(1.5rem,4vw,2.8rem);color:var(--text-secondary);font-weight:600;"></span>
+        </h1>
+
+        <p class="hero-description">{{ bio.bio }}</p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-primary-custom" id="viewProjectsBtn">
+            <i class="bi bi-folder2-open"></i> View Projects
+          </a>
+          {% if bio.resume_file %}
+          <a href="{{ bio.resume_file.url }}" target="_blank" class="btn-outline-custom" id="downloadResumeBtn">
+            <i class="bi bi-download"></i> Download Resume
+          </a>
+          {% endif %}
+        </div>
+
+        <!-- Social Links -->
+        <div class="hero-stats mt-4">
+          {% if bio.github_url %}
+          <a href="{{ bio.github_url }}" target="_blank" class="btn-outline-custom" style="padding:0.5rem 1.25rem;font-size:0.85rem;" id="githubLink">
+            <i class="bi bi-github"></i> GitHub
+          </a>
+          {% endif %}
+          {% if bio.linkedin_url %}
+          <a href="{{ bio.linkedin_url }}" target="_blank" class="btn-outline-custom" style="padding:0.5rem 1.25rem;font-size:0.85rem;" id="linkedinLink">
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          {% endif %}
+          <a href="#contact" class="btn-outline-custom" style="padding:0.5rem 1.25rem;font-size:0.85rem;" id="contactBtn">
+            <i class="bi bi-envelope"></i> Contact
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Profile Image -->
+      <div class="col-lg-5 text-center">
+        <div class="hero-image-wrapper">
+          {% if bio.profile_image %}
+          <img src="{{ bio.profile_image.url }}" alt="{{ bio.full_name }}" class="hero-image">
+          {% else %}
+          <div class="hero-image-placeholder">
+            {{ bio.full_name|first|default:"M" }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{# ================================================================== #}
+{# ABOUT SECTION                                                        #}
+{# Data source: Bio model — about_section, email, phone, location      #}
+{# ================================================================== #}
+<section id="about" class="section-wrapper bg-alt">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">Get to know me</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row g-4 align-items-start">
+      <!-- About Text -->
+      <div class="col-lg-7">
+        <div class="glass-card fade-in-up">
+          <div class="about-text">
+            {% for line in bio.about_section.splitlines %}
+              {% if line %}
+                <p>{{ line }}</p>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-5">
+        <div class="glass-card fade-in-up">
+          <h5 style="color:var(--text-secondary);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem;">Contact Details</h5>
+
+          {% if bio.email %}
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value"><a href="mailto:{{ bio.email }}">{{ bio.email }}</a></div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if bio.phone %}
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">{{ bio.phone }}</div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if bio.location %}
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">{{ bio.location }}</div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if bio.linkedin_url %}
+          <div class="contact-item">
+            <div class="contact-icon">💼</div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">
+                <a href="{{ bio.linkedin_url }}" target="_blank">View Profile →</a>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if bio.github_url %}
+          <div class="contact-item">
+            <div class="contact-icon">🐙</div>
+            <div>
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value">
+                <a href="{{ bio.github_url }}" target="_blank">View Repositories →</a>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{# ================================================================== #}
+{# EDUCATION SECTION                                                     #}
+{# Data source: Education model (apps.education)                        #}
+{# ================================================================== #}
+<section id="education" class="section-wrapper">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">Academic Background</p>
+      <h2 class="section-title">Education</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="timeline">
+          {% for edu in education_records %}
+          <div class="timeline-item fade-in-up">
+            <div class="timeline-year">{{ edu.start_year }} – {{ edu.end_year|default:"Present" }}</div>
+            <div class="timeline-degree">{{ edu.degree }}</div>
+            <div class="timeline-institution">
+              <i class="bi bi-building me-1"></i>{{ edu.institution }}
+            </div>
+            {% if edu.gpa %}
+            <div class="timeline-gpa">GPA: {{ edu.gpa }}</div>
+            {% endif %}
+            {% if edu.description %}
+            <p style="color:var(--text-secondary);margin-top:0.75rem;font-size:0.9rem;">{{ edu.description }}</p>
+            {% endif %}
+          </div>
+          {% empty %}
+          <p class="text-center" style="color:var(--text-muted);">No education records found.</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{# ================================================================== #}
+{# SKILLS SECTION                                                        #}
+{# Data source: Skill model (apps.skills) — grouped by category         #}
+{# ================================================================== #}
+<section id="skills" class="section-wrapper bg-alt">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">What I work with</p>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Tools & Platforms -->
+      <div class="col-lg-4 fade-in-up">
+        <div class="glass-card h-100">
+          <div class="skill-category-title">
+            <i class="bi bi-tools me-2"></i>Tools &amp; Platforms
+          </div>
+          {% for skill in tools_skills %}
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-pct">{{ skill.proficiency }}%</span>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-bar" data-width="{{ skill.proficiency }}"></div>
+            </div>
+          </div>
+          {% empty %}
+          <p style="color:var(--text-muted);font-size:0.875rem;">No skills in this category yet.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Languages & Frameworks -->
+      <div class="col-lg-4 fade-in-up">
+        <div class="glass-card h-100">
+          <div class="skill-category-title">
+            <i class="bi bi-code-slash me-2"></i>Languages &amp; Frameworks
+          </div>
+          {% for skill in language_skills %}
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-pct">{{ skill.proficiency }}%</span>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-bar" data-width="{{ skill.proficiency }}"></div>
+            </div>
+          </div>
+          {% empty %}
+          <p style="color:var(--text-muted);font-size:0.875rem;">No skills in this category yet.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Technical Concepts -->
+      <div class="col-lg-4 fade-in-up">
+        <div class="glass-card h-100">
+          <div class="skill-category-title">
+            <i class="bi bi-lightbulb me-2"></i>Technical Concepts
+          </div>
+          {% for skill in concept_skills %}
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-pct">{{ skill.proficiency }}%</span>
+            </div>
+            <div class="skill-bar-wrapper">
+              <div class="skill-bar" data-width="{{ skill.proficiency }}"></div>
+            </div>
+          </div>
+          {% empty %}
+          <p style="color:var(--text-muted);font-size:0.875rem;">No skills in this category yet.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{# ================================================================== #}
+{# EXPERIENCE SECTION                                                    #}
+{# Data source: Experience, Achievement, ExperienceTechnology models    #}
+{# (apps.experience) — demonstrates ForeignKey relationships            #}
+{# ================================================================== #}
+<section id="experience" class="section-wrapper">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">Where I've worked</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row justify-content-center g-4">
+      {% for exp in experience_records %}
+      <div class="col-lg-10 fade-in-up">
+        <div class="exp-card">
+
+          <div class="row justify-content-between align-items-start mb-3">
+            <div class="col">
+              <div class="exp-role">{{ exp.role }}</div>
+              <div class="exp-org">
+                <i class="bi bi-building me-1"></i>{{ exp.organization }}
+              </div>
+              <div class="exp-dates">
+                <i class="bi bi-calendar3 me-1"></i>{{ exp.dates }}
+              </div>
+            </div>
+          </div>
+
+          <p class="exp-responsibilities">{{ exp.responsibilities }}</p>
+
+          <!-- Achievements — from related Achievement model (ForeignKey) -->
+          {% if exp.achievements.all %}
+          <h6 style="color:var(--text-muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.75rem;">
+            <i class="bi bi-trophy me-1"></i>Key Achievements
+          </h6>
+          <ul class="exp-achievements">
+            {% for achievement in exp.achievements.all %}
+            <li>{{ achievement.text }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          <!-- Technologies — from related ExperienceTechnology model (ForeignKey) -->
+          {% if exp.technologies.all %}
+          <h6 style="color:var(--text-muted);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.75rem;">
+            <i class="bi bi-stack me-1"></i>Technologies Used
+          </h6>
+          <div class="tech-tags">
+            {% for tech in exp.technologies.all %}
+            <span class="tech-tag">{{ tech.name }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-lg-10 text-center">
+        <p style="color:var(--text-muted);">No experience records found.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{# ================================================================== #}
+{# PROJECTS SECTION                                                      #}
+{# Data source: Project, ProjectTechnology, ProjectScreenshot,          #}
+{# ProjectFeature models (apps.projects)                                #}
+{# ================================================================== #}
+<section id="projects" class="section-wrapper bg-alt">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">Things I've built</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row g-4">
+      {% for project in projects %}
+      <div class="col-lg-6 fade-in-up">
+        <div class="project-card">
+
+          <div class="project-card-header">
+            <div class="project-name">
+              <i class="bi bi-folder2 me-2" style="color:var(--primary)"></i>{{ project.name }}
+            </div>
+            <p class="project-description">{{ project.description }}</p>
+
+            <!-- Features — from ProjectFeature model (ForeignKey) -->
+            {% if project.features.all %}
+            <ul class="project-features">
+              {% for feature in project.features.all %}
+              <li>{{ feature.text }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            <!-- Technologies — from ProjectTechnology model (ForeignKey) -->
+            {% if project.technologies.all %}
+            <div class="tech-tags mb-3">
+              {% for tech in project.technologies.all %}
+              <span class="tech-tag">{{ tech.name }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+
+          <!-- Screenshots Gallery — from ProjectScreenshot model (ForeignKey) -->
+          {% if project.screenshots.all %}
+          <div class="screenshots-gallery">
+            {% for screenshot in project.screenshots.all %}
+            <div class="screenshot-thumb">
+              <img src="{{ screenshot.image.url }}"
+                   alt="{{ screenshot.caption|default:project.name }}"
+                   loading="lazy">
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- Project Links -->
+          <div class="project-card-footer">
+            {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank" class="project-link" rel="noopener noreferrer">
+              <i class="bi bi-box-arrow-up-right"></i> Live Demo
+            </a>
+            {% endif %}
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" class="project-link" rel="noopener noreferrer">
+              <i class="bi bi-github"></i> GitHub
+            </a>
+            {% endif %}
+            {% if project.status %}
+            <span class="tech-tag" style="margin-left:auto;">
+              {{ project.get_status_display }}
+            </span>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p style="color:var(--text-muted);">No projects found.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{# ================================================================== #}
+{# CERTIFICATIONS SECTION (BONUS)                                        #}
+{# Data source: Certification model (apps.projects)                     #}
+{# ================================================================== #}
+<section id="certifications" class="section-wrapper">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">Professional Credentials</p>
+      <h2 class="section-title">Certifications</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row g-4">
+      {% for cert in certifications %}
+      <div class="col-lg-3 col-md-4 col-sm-6 fade-in-up">
+        <div class="cert-card">
+          {% if cert.image %}
+          <img src="{{ cert.image.url }}" alt="{{ cert.name }}" class="cert-image" loading="lazy">
+          {% else %}
+          <div class="cert-image-placeholder">🏆</div>
+          {% endif %}
+          <div class="cert-body">
+            <div class="cert-name">{{ cert.name }}</div>
+            <div class="cert-issuer">{{ cert.issuer }}</div>
+            {% if cert.issue_date %}
+            <div class="cert-date">{{ cert.issue_date }}</div>
+            {% endif %}
+            {% if cert.credential_url %}
+            <a href="{{ cert.credential_url }}" target="_blank" class="project-link mt-2 d-block">
+              <i class="bi bi-link-45deg"></i> View Credential
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <p style="color:var(--text-muted);">No certifications added yet.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{# ================================================================== #}
+{# CASE STUDIES SECTION (BONUS)                                          #}
+{# Data source: CaseStudy model (apps.projects)                         #}
+{# ================================================================== #}
+{% if case_studies %}
+<section id="case-studies" class="section-wrapper bg-alt">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">Deep Dives</p>
+      <h2 class="section-title">Case Studies</h2>
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      {% for cs in case_studies %}
+      <div class="col-lg-8 fade-in-up">
+        <div class="casestudy-card">
+          <div class="casestudy-icon">📄</div>
+          <div class="flex-grow-1">
+            <div class="casestudy-title">{{ cs.title }}</div>
+            <p class="casestudy-desc">{{ cs.description }}</p>
+            <div class="d-flex gap-3 flex-wrap">
+              {% if cs.pdf_file %}
+              <a href="{{ cs.pdf_file.url }}" target="_blank" class="casestudy-link">
+                <i class="bi bi-file-earmark-pdf"></i> Read Full Case Study
+              </a>
+              {% elif cs.live_url %}
+              <a href="{{ cs.live_url }}" target="_blank" class="casestudy-link">
+                <i class="bi bi-box-arrow-up-right"></i> View Case Study
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+
+{# ================================================================== #}
+{# CONTACT SECTION                                                       #}
+{# Data source: Bio model — email, phone, social links                  #}
+{# ================================================================== #}
+<section id="contact" class="section-wrapper">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="about-label">Let's Connect</p>
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="section-divider mx-auto"></div>
+      <p class="section-subtitle mt-3">
+        Have a project in mind? Let's discuss automation and AI solutions.
+      </p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      {% if bio.email %}
+      <div class="col-lg-3 col-md-6 fade-in-up">
+        <a href="mailto:{{ bio.email }}" class="text-decoration-none" id="emailContactLink">
+          <div class="contact-card">
+            <div class="contact-card-icon">📧</div>
+            <h6 style="color:var(--text-secondary);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;">Email</h6>
+            <p style="color:var(--text-primary);font-size:0.9rem;font-weight:500;margin:0;">{{ bio.email }}</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+
+      {% if bio.phone %}
+      <div class="col-lg-3 col-md-6 fade-in-up">
+        <a href="tel:{{ bio.phone }}" class="text-decoration-none" id="phoneContactLink">
+          <div class="contact-card">
+            <div class="contact-card-icon">📱</div>
+            <h6 style="color:var(--text-secondary);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;">Phone</h6>
+            <p style="color:var(--text-primary);font-size:0.9rem;font-weight:500;margin:0;">{{ bio.phone }}</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+
+      {% if bio.linkedin_url %}
+      <div class="col-lg-3 col-md-6 fade-in-up">
+        <a href="{{ bio.linkedin_url }}" target="_blank" class="text-decoration-none" id="linkedinContactLink">
+          <div class="contact-card">
+            <div class="contact-card-icon">💼</div>
+            <h6 style="color:var(--text-secondary);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;">LinkedIn</h6>
+            <p style="color:var(--text-primary);font-size:0.9rem;font-weight:500;margin:0;">Connect with me</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+
+      {% if bio.github_url %}
+      <div class="col-lg-3 col-md-6 fade-in-up">
+        <a href="{{ bio.github_url }}" target="_blank" class="text-decoration-none" id="githubContactLink">
+          <div class="contact-card">
+            <div class="contact-card-icon">🐙</div>
+            <h6 style="color:var(--text-secondary);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;">GitHub</h6>
+            <p style="color:var(--text-primary);font-size:0.9rem;font-weight:500;margin:0;">@MananAsim</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+
+    </div>
+
+    <!-- Resume Download CTA -->
+    {% if bio.resume_file %}
+    <div class="text-center mt-5 fade-in-up">
+      <a href="{{ bio.resume_file.url }}" target="_blank" class="btn-primary-custom" id="resumeDownloadCTA"
+         style="font-size:1.1rem;padding:1rem 2.5rem;">
+        <i class="bi bi-download"></i> Download Full Resume
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

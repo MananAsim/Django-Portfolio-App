@@ -1,0 +1,451 @@
+[
+  {
+    "model": "bio.bio",
+    "pk": 1,
+    "fields": {
+      "full_name": "Manan Asim",
+      "professional_title": "AI Automation & Systems Builder",
+      "tagline": "AI Automation & Systems Builder",
+      "bio": "I architect end-to-end automated workflows, integrate complex APIs, and develop AI-driven systems to seamlessly connect isolated services and drastically reduce manual effort.",
+      "about_section": "NO-CODE / LOW-CODE & API INTEGRATIONS\n\nI architect end-to-end automated workflows, integrate complex APIs, and develop AI-driven systems to seamlessly connect isolated services and drastically reduce manual effort.",
+      "email": "manansama17@gmail.com",
+      "phone": "+92 300 6562793",
+      "location": "Lahore, Pakistan",
+      "linkedin_url": "https://www.linkedin.com/in/mananasim/",
+      "github_url": "https://github.com/MananAsim",
+      "portfolio_url": "https://mananasim.vercel.app",
+      "profile_image": "",
+      "resume_file": ""
+    }
+  },
+
+  {
+    "model": "education.education",
+    "pk": 1,
+    "fields": {
+      "degree": "BS Computer Science",
+      "institution": "University of Management & Technology (UMT), Lahore",
+      "start_year": "2022",
+      "end_year": "2026",
+      "gpa": null,
+      "description": null,
+      "order": 1
+    }
+  },
+
+  {
+    "model": "skills.skill",
+    "pk": 1,
+    "fields": {"name": "HubSpot CRM", "category": "tools_platforms", "proficiency": 90, "order": 1}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 2,
+    "fields": {"name": "Make.com", "category": "tools_platforms", "proficiency": 92, "order": 2}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 3,
+    "fields": {"name": "n8n Workflow Automation", "category": "tools_platforms", "proficiency": 88, "order": 3}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 4,
+    "fields": {"name": "Zapier Integrations", "category": "tools_platforms", "proficiency": 85, "order": 4}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 5,
+    "fields": {"name": "Airtable", "category": "tools_platforms", "proficiency": 88, "order": 5}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 6,
+    "fields": {"name": "GoHighLevel Sync", "category": "tools_platforms", "proficiency": 80, "order": 6}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 7,
+    "fields": {"name": "Zendesk Sync", "category": "tools_platforms", "proficiency": 78, "order": 7}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 8,
+    "fields": {"name": "Cursor", "category": "tools_platforms", "proficiency": 85, "order": 8}
+  },
+
+  {
+    "model": "skills.skill",
+    "pk": 9,
+    "fields": {"name": "Google Apps Script", "category": "languages_frameworks", "proficiency": 85, "order": 1}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 10,
+    "fields": {"name": "Python Scripting", "category": "languages_frameworks", "proficiency": 80, "order": 2}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 11,
+    "fields": {"name": "JavaScript", "category": "languages_frameworks", "proficiency": 82, "order": 3}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 12,
+    "fields": {"name": "Next.js", "category": "languages_frameworks", "proficiency": 78, "order": 4}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 13,
+    "fields": {"name": "React", "category": "languages_frameworks", "proficiency": 75, "order": 5}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 14,
+    "fields": {"name": "PostgreSQL", "category": "languages_frameworks", "proficiency": 72, "order": 6}
+  },
+
+  {
+    "model": "skills.skill",
+    "pk": 15,
+    "fields": {"name": "RevOps", "category": "technical_concepts", "proficiency": 92, "order": 1}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 16,
+    "fields": {"name": "OpenAI / ChatGPT", "category": "technical_concepts", "proficiency": 88, "order": 2}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 17,
+    "fields": {"name": "API Integrations", "category": "technical_concepts", "proficiency": 95, "order": 3}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 18,
+    "fields": {"name": "Prompt Engineering", "category": "technical_concepts", "proficiency": 87, "order": 4}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 19,
+    "fields": {"name": "JSON Handling", "category": "technical_concepts", "proficiency": 90, "order": 5}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 20,
+    "fields": {"name": "Claude API", "category": "technical_concepts", "proficiency": 82, "order": 6}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 21,
+    "fields": {"name": "Webhooks", "category": "technical_concepts", "proficiency": 92, "order": 7}
+  },
+  {
+    "model": "skills.skill",
+    "pk": 22,
+    "fields": {"name": "REST APIs", "category": "technical_concepts", "proficiency": 93, "order": 8}
+  },
+
+  {
+    "model": "experience.experience",
+    "pk": 1,
+    "fields": {
+      "role": "Junior CRM, RevOps & Automations Engineer",
+      "organization": "Growlyze Technologies",
+      "dates": "May 2026 - Present | Lahore, Punjab, Pakistan (On-site)",
+      "responsibilities": "Working at the intersection of software engineering and business logic to build scalable revenue engines and automated operational systems.",
+      "order": 1
+    }
+  },
+  {
+    "model": "experience.achievement",
+    "pk": 1,
+    "fields": {
+      "experience": 1,
+      "text": "CRM Architecture: Designing and implementing enterprise-grade HubSpot environments, focusing on data hygiene, custom properties, and optimized lifecycle stages for B2B clients.",
+      "order": 1
+    }
+  },
+  {
+    "model": "experience.achievement",
+    "pk": 2,
+    "fields": {
+      "experience": 1,
+      "text": "Business Process Automation: Developing custom API integrations and workflow automations (via Make.com, n8n, and AppScript) to eliminate manual bottlenecks and accelerate lead-to-close times.",
+      "order": 2
+    }
+  },
+  {
+    "model": "experience.achievement",
+    "pk": 3,
+    "fields": {
+      "experience": 1,
+      "text": "Systems Integration: Bridging the gap between full-stack development (React/Next.js) and RevOps to build cohesive, automated ecosystems.",
+      "order": 3
+    }
+  },
+  {
+    "model": "experience.experiencetechnology",
+    "pk": 1,
+    "fields": {"experience": 1, "name": "HubSpot"}
+  },
+  {
+    "model": "experience.experiencetechnology",
+    "pk": 2,
+    "fields": {"experience": 1, "name": "Make.com"}
+  },
+  {
+    "model": "experience.experiencetechnology",
+    "pk": 3,
+    "fields": {"experience": 1, "name": "n8n"}
+  },
+  {
+    "model": "experience.experiencetechnology",
+    "pk": 4,
+    "fields": {"experience": 1, "name": "AppScript"}
+  },
+  {
+    "model": "experience.experiencetechnology",
+    "pk": 5,
+    "fields": {"experience": 1, "name": "React"}
+  },
+  {
+    "model": "experience.experiencetechnology",
+    "pk": 6,
+    "fields": {"experience": 1, "name": "Next.js"}
+  },
+  {
+    "model": "experience.experiencetechnology",
+    "pk": 7,
+    "fields": {"experience": 1, "name": "APIs"}
+  },
+
+  {
+    "model": "projects.project",
+    "pk": 1,
+    "fields": {
+      "name": "AI Lead-to-Conversion Automation System",
+      "description": "Built an automated pipeline to capture, qualify, and respond to inbound leads using AI. Integrated lead forms with Airtable and Google Sheets, triggering real-time workflows via automation tools. Used OpenAI (ChatGPT API) to classify inbound lead intent and generate personalized responses instantly. Automated email and WhatsApp responses alongside internal notifications to aggressively reduce manual follow-ups.",
+      "github_url": null,
+      "live_url": null,
+      "status": null,
+      "order": 1
+    }
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 1,
+    "fields": {"project": 1, "name": "Airtable"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 2,
+    "fields": {"project": 1, "name": "Google Sheets"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 3,
+    "fields": {"project": 1, "name": "OpenAI / ChatGPT API"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 4,
+    "fields": {"project": 1, "name": "WhatsApp"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 5,
+    "fields": {"project": 1, "name": "Webhooks"}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 1,
+    "fields": {"project": 1, "text": "Webhook \u2192 OpenAI Parse \u2192 Data Sync \u2192 Auto-Reply", "order": 1}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 2,
+    "fields": {"project": 1, "text": "Integrated lead forms with real-time triggers", "order": 2}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 3,
+    "fields": {"project": 1, "text": "Connected multiple isolated services using APIs", "order": 3}
+  },
+
+  {
+    "model": "projects.project",
+    "pk": 2,
+    "fields": {
+      "name": "SupportOS: Automated Ticket Resolution",
+      "description": "Built a live SaaS simulation using modern AI-assisted coding environments (Cursor) showcasing intelligent issue tracking and triage. Implemented AI reasoning models to automate initial responses and coordinate async communication between mock end-users and internal support.",
+      "github_url": null,
+      "live_url": "https://supportos.vercel.app/login",
+      "status": "live",
+      "order": 2
+    }
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 6,
+    "fields": {"project": 2, "name": "Cursor"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 7,
+    "fields": {"project": 2, "name": "AI reasoning models"}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 4,
+    "fields": {"project": 2, "text": "Automated initial responses via AI reasoning", "order": 1}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 5,
+    "fields": {"project": 2, "text": "Async communication coordination between users and support", "order": 2}
+  },
+
+  {
+    "model": "projects.project",
+    "pk": 3,
+    "fields": {
+      "name": "SahulatHub \u2014 MVP Platform Architecture",
+      "description": "Designed data architectures that integrate multiple marketplace services alongside a custom API layer. Coordinated back-end background jobs and database migrations (PostgreSQL) ensuring robust data consistency. Delivered rapid MVP iterations utilizing AI-assisted generation tools.",
+      "github_url": null,
+      "live_url": "https://sahulat-hub-three.vercel.app/",
+      "status": "live",
+      "order": 3
+    }
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 8,
+    "fields": {"project": 3, "name": "PostgreSQL"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 9,
+    "fields": {"project": 3, "name": "AI-assisted generation tools"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 10,
+    "fields": {"project": 3, "name": "Custom API layer"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 11,
+    "fields": {"project": 3, "name": "Webhooks"}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 6,
+    "fields": {"project": 3, "text": "Integrated multiple marketplace services", "order": 1}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 7,
+    "fields": {"project": 3, "text": "Coordinated back-end background jobs & database migrations", "order": 2}
+  },
+  {
+    "model": "projects.projectfeature",
+    "pk": 8,
+    "fields": {"project": 3, "text": "Rapid MVP iterations with AI-assisted tools", "order": 3}
+  },
+
+  {
+    "model": "projects.project",
+    "pk": 4,
+    "fields": {
+      "name": "Scalable RevOps Architecture: HubSpot to Google Sheets Data Pipeline",
+      "description": "A comprehensive deep dive into scalable system architectures, API integrations, and AI-driven workflow automations designed to eliminate operational bottlenecks.",
+      "github_url": null,
+      "live_url": "/HubSpot_To_Google_Sheets.pdf",
+      "status": "completed",
+      "order": 4
+    }
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 12,
+    "fields": {"project": 4, "name": "HubSpot"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 13,
+    "fields": {"project": 4, "name": "Google Sheets"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 14,
+    "fields": {"project": 4, "name": "API Integrations"}
+  },
+  {
+    "model": "projects.projecttechnology",
+    "pk": 15,
+    "fields": {"project": 4, "name": "AI Workflow Automations"}
+  },
+
+  {
+    "model": "projects.certification",
+    "pk": 1,
+    "fields": {
+      "name": "HubSpot Marketing Software Certification",
+      "issuer": "HubSpot Academy",
+      "issue_date": "2024",
+      "credential_url": null,
+      "image": "",
+      "order": 1
+    }
+  },
+  {
+    "model": "projects.certification",
+    "pk": 2,
+    "fields": {
+      "name": "HubSpot CRM Certification",
+      "issuer": "HubSpot Academy",
+      "issue_date": "2024",
+      "credential_url": null,
+      "image": "",
+      "order": 2
+    }
+  },
+  {
+    "model": "projects.certification",
+    "pk": 3,
+    "fields": {
+      "name": "RevOps Certification",
+      "issuer": "HubSpot Academy",
+      "issue_date": "2024",
+      "credential_url": null,
+      "image": "",
+      "order": 3
+    }
+  },
+  {
+    "model": "projects.certification",
+    "pk": 4,
+    "fields": {
+      "name": "Make.com Automation Certification",
+      "issuer": "Make.com",
+      "issue_date": "2024",
+      "credential_url": null,
+      "image": "",
+      "order": 4
+    }
+  },
+
+  {
+    "model": "projects.casestudy",
+    "pk": 1,
+    "fields": {
+      "title": "Scalable RevOps Architecture: HubSpot to Google Sheets Data Pipeline",
+      "description": "A comprehensive deep dive into scalable system architectures, API integrations, and AI-driven workflow automations designed to eliminate operational bottlenecks. This case study walks through the design, implementation, and results of building a live data pipeline between HubSpot CRM and Google Sheets.",
+      "pdf_file": "",
+      "thumbnail": "",
+      "live_url": null,
+      "order": 1
+    }
+  }
+]

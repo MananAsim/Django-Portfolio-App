@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block meta_description %}Manan Asim — AI Automation & Systems Builder. Portfolio showcasing projects, skills, and experience.{% endblock %}">
+  <meta name="author" content="Manan Asim">
+  <meta name="keywords" content="AI Automation, RevOps, CRM, Django, Portfolio, Manan Asim">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}Manan Asim — Portfolio{% endblock %}">
+  <meta property="og:description" content="AI Automation & Systems Builder | RevOps Engineer">
+  <meta property="og:type" content="website">
+
+  <title>{% block title %}Manan Asim — AI Automation & Systems Builder{% endblock %}</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">MA<span style="color:var(--accent)">.</span></a>
+
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          {% if bio and bio.resume_file %}
+          <li class="nav-item ms-lg-2">
+            <a href="{{ bio.resume_file.url }}" target="_blank" class="btn-primary-custom" id="navResumeBtn">
+              <i class="bi bi-download"></i> Resume
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Main Content ─────────────────────────────────────────── -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <p class="mb-1">
+        Built with <span style="color:var(--accent)">♥</span> using Django &mdash;
+        <strong>BS Computer Science Web Technologies Project</strong>
+      </p>
+      <p class="mb-0">
+        &copy; 2024 <a href="#hero">Manan Asim</a> &mdash; All rights reserved
+      </p>
+    </div>
+  </footer>
+
+  <!-- ── Lightbox Overlay ─────────────────────────────────────── -->
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <img src="" alt="Screenshot" class="lightbox-img" id="lightboxImg">
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>
