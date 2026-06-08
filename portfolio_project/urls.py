@@ -10,14 +10,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.views.static import serve
+from django.urls import re_path
+
 urlpatterns = [
     # Django Admin — instructor can verify database-driven content here
     path('admin/', admin.site.urls),
 
     # Portfolio home page — handled by the bio app
     path('', include('apps.bio.urls')),
+    
+    # Serve media files on Vercel regardless of DEBUG status
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 ]
-
-# Serve uploaded media files in development mode
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
