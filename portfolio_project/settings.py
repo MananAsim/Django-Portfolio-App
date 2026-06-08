@@ -70,12 +70,28 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
 # ─── Database ─────────────────────────────────────────────────────────────────
 # SQLite for development — switch to PostgreSQL for production
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+import shutil
+
+# On Vercel, the filesystem is read-only. We copy the DB to /tmp to allow SQLite to function.
+db_path = BASE_DIR / 'db.sqlite3'
+tmp_db_path = Path('/tmp/db.sqlite3')
+
+if os.environ.get('VERCEL'):
+    if db_path.exists() and not tmp_db_path.exists():
+        shutil.copy2(db_path, tmp_db_path)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': tmp_db_path,
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': db_path,
+        }
+    }
 
 # ─── Password Validation ──────────────────────────────────────────────────────
 AUTH_PASSWORD_VALIDATORS = [
